@@ -48,7 +48,7 @@ const paddle = {
     w: 80,
     h: 8,
     speed: 8,
-    dx: 4
+    dx: 15
 }
 
 //Draw ball onto canvas
@@ -98,10 +98,26 @@ function movePaddle(){
     document.addEventListener('keyup', keyUp);
 
     if(canvas.width<=ball.x || ball.x<0 ) 
-    {ball.dx=ball.dx*-1;}
+    {ball.dx=-ball.dx;}
 
     if(canvas.height<=ball.y || ball.y<0) 
-    {ball.dy=ball.dy*-1;}
+    {ball.dy=-ball.dy;}
+
+    if(ball.x>=paddle.x-15 && ball.x<=paddle.x+15 && ball.y>=paddle.y-4 && ball.y<=paddle.y+4)
+    {ball.dy=-ball.dy;}
+
+    //if(canvas.height<=ball.y || ball.y<0  ) 
+    //{ball.dy=-ball.dy;}
+
+    //if((ball.x>=paddle.x-4 && ball.x<=paddle.x+4 && ball.y>=paddle.y-4 && ball.y<=paddle.y+4))
+    //{ball.dy=-ball.dy;}
+
+}
+
+
+
+
+
 
 
     //Surrounding wall detection
@@ -111,7 +127,7 @@ function movePaddle(){
     //Surrounding wall detection
     //To the left side
     
-}
+
 //Function to move ball on the canvas
 function moveBall(){
     ball.x += ball.dx;
@@ -157,10 +173,10 @@ function showAllBlocks(){
     })
 }
 
-function showGamePauseText(e){
+function showGamePauseText(){
 
-    
-    
+    //document.addEventListener('escape', GamePause);
+
 }
 
 function showLevelCompleteText(){
@@ -220,9 +236,15 @@ function keyUp(e){
     } 
 }
 
+
+
+
+
 //Keyboard event handlers
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
+//document.addEventListener('escape', GamePause);
+
 
 
 
