@@ -97,6 +97,12 @@ function movePaddle(){
 
     document.addEventListener('keyup', keyUp);
 
+    if(canvas.width<=ball.x || ball.x<0 ) 
+    {ball.dx=ball.dx*-1;}
+
+    if(canvas.height<=ball.y || ball.y<0) 
+    {ball.dy=ball.dy*-1;}
+
 
     //Surrounding wall detection
     //To the right side
@@ -106,7 +112,6 @@ function movePaddle(){
     //To the left side
     
 }
-
 //Function to move ball on the canvas
 function moveBall(){
     ball.x += ball.dx;
@@ -152,7 +157,9 @@ function showAllBlocks(){
     })
 }
 
-function showGamePauseText(){
+function showGamePauseText(e){
+
+    
     
 }
 
