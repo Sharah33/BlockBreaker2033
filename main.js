@@ -48,7 +48,7 @@ const paddle = {
     w: 80,
     h: 8,
     speed: 8,
-    dx: 0
+    dx: 4
 }
 
 //Draw ball onto canvas
@@ -90,7 +90,13 @@ function drawScore(){
 
 //Function to move paddle on the canvas
 function movePaddle(){
-    paddle.x += paddle.dx;
+    
+
+    document.addEventListener('keydown', keyDown); 
+
+
+    document.addEventListener('keyup', keyUp);
+
 
     //Surrounding wall detection
     //To the right side
@@ -190,8 +196,12 @@ update();
 function keyDown(e){
     if(e.key === 'Right' || e.key === 'ArrowRight'){
 
-    } else if(e.key === 'Left' || e.key === 'ArrowLeft'){
+        paddle.x += paddle.dx;
 
+    } else if(e.key === 'Left' || e.key === 'ArrowLeft'){
+         
+        paddle.x -= paddle.dx;
+    
     } 
 }
 
@@ -206,7 +216,6 @@ function keyUp(e){
 //Keyboard event handlers
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
-
 
 
 
